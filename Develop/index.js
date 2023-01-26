@@ -53,13 +53,26 @@ const questions = [
   },
   {
     type: 'input',
-    name: 'motivation',
-    message: 'What motivated you to create this project?',
-    validate: motivationInput => {
-        if (motivationInput) {
+    name: 'description',
+    message: 'Describe your project.',
+    validate: descriptionInput => {
+        if(descriptionInput) {
             return true;
         } else {
-            console.log('Please type your motivation');
+            console.log('Please provide project description.');
+            return false;
+        }
+    }
+  },
+  {
+    type: 'input',
+    name: 'purpose',
+    message: 'What is the purpose of this project?',
+    validate: purposeInput => {
+        if (purposeInput) {
+            return true;
+        } else {
+            console.log('Please type the purpose of your porject.');
             return false;
         }
     }
@@ -76,7 +89,7 @@ const questions = [
             return false;
         }
     }
-  }
+  },
   {
     type: 'input',
     name: 'learn',
@@ -90,12 +103,64 @@ const questions = [
         }
     }
   },
+  {
+    type: 'input',
+    name: 'contributions',
+    message: 'What are contribution guidelines for users?',
+    validate: contributionsInput => {
+        if (contributionsInput) {
+            return true;
+        } else {
+            console.log('Please provide list of contributors.');
+            return false;
+        }
+    }
+  },
+  {
+    type: 'input',
+    name: 'test',
+    message: 'What steps can users follow to test this app?',
+    validate: testInput => {
+        if (testInput) {
+            return true;
+        } else {
+            console.log('Please provide testing steps.');
+            return false;
+        }
+    }
+  },
+  {
+    type: 'input',
+    name: 'askMe',
+    message: 'What is your github url in case users need to ask you a question?',
+    validate: urlInput => {
+        if (urlInput) {
+            return true;
+        } else {
+            console.log('Please provide Github url.');
+            return false;
+        }
+    }
+  },
+  {
+    type: 'input',
+    name: 'email',
+    message: 'What is your email in case users need to ask you a question?',
+    validate: emailInput => {
+        if (emailInput) {
+            return true;
+        } else {
+            console.log('Please provide Github url.');
+            return false;
+        }
+    }
+  },
 ];
 
 
 
 // TODO: Create a function to write README file
-function writeToFile = fileContent => {
+const writeToFile = fileContent => {
     return new Promise((resolve, reject) => {
         fs.writeFile('./generatedREADME.md', fileContent, err => {
             if (err) {
@@ -111,7 +176,7 @@ function writeToFile = fileContent => {
 
 // TODO: Create a function to initialize app
 function init() {
-  inquirer.createPromptModule(questions)
+  inquirer.prompt(questions)
     .then(function(answer) {
         console.log(answer);
     var fileContent = generateMarkdown(answer);

@@ -13,7 +13,7 @@ function renderLicenseBadge(license) {
   } else if (license === 'GPL v3.0') {
     badge = '![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)]'
   } else {
-    badge = ''
+    badge = ""
   }
   return badge;
 }
@@ -31,7 +31,7 @@ function renderLicenseLink(license) {
   } else {
     licenseLink = ''
   }
-  return badge;
+  return licenseLink;
 }
 
 // TODO: Create a function that returns the license section of README
@@ -48,7 +48,7 @@ function renderLicenseSection(license) {
 }
 
 // TODO: Create a function to generate markdown for README
-function generateMarkdown(data) {
+function generateMarkdown(answer) {
   return `
   # ${answer.title}
 
@@ -56,15 +56,13 @@ function generateMarkdown(data) {
   ### ${renderLicenseLink(answer.license)}
 
   ## Table of Contents 
-  ### [License](#license)
   ### [Installation](#installation)
   ### [Description](#description)
-  ### [Purpose](#purpose)
-  ### [Solution](#solution)
-  ### [Learning](#learn)
+  ### [Credit](#credit)
   ### [Contribution](#contributions)
   ### [Test](#test)
   ### [Questions](#questions)
+  ### [Badges](#badges)
 
   ## Installation:
   ### You need to install these to use the app:
@@ -72,15 +70,12 @@ function generateMarkdown(data) {
 
   ## Description:
   ### ${answer.description}
+  ### Purpose: ${answer.purpose}
+  ### Solution: ${answer.solution}
+  ### Learning Point: ${answer.learn}
 
-  ## Purpose:
-  ### ${answer.purpose}
-
-  ## Solution:
-  ### ${answer.solution}
-
-  ## Learning Point:
-  ### ${answer.learn}
+  ## Credit:
+  ### ${answer.credit}
 
   ## Contribution:
   ### ${answer.contributions}

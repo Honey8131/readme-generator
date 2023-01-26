@@ -9,7 +9,7 @@ const generateMarkdown = require('./utils/generateMarkdown.js');
     'What did you learn from your project?'*/
 
 const questions = [
-{
+  {
     type: 'input',
     name: 'title',
     message: 'What was the title of your project?',
@@ -105,6 +105,19 @@ const questions = [
   },
   {
     type: 'input',
+    name: 'credit',
+    message: 'Who helped make this project?',
+    validate: creditInput => {
+        if (creditInput) {
+            return true;
+        } else {
+            console.log('Please list of contributors.');
+            return false;
+        }
+    }
+  },
+  {
+    type: 'input',
     name: 'contributions',
     message: 'What are contribution guidelines for users?',
     validate: contributionsInput => {
@@ -186,3 +199,5 @@ function init() {
 
 // Function call to initialize app
 init();
+
+module.exports = questions;

@@ -144,7 +144,7 @@ const questions = [
   },
   {
     type: 'input',
-    name: 'askMe',
+    name: 'url',
     message: 'What is your github url in case users need to ask you a question?',
     validate: urlInput => {
         if (urlInput) {
